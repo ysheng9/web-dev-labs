@@ -1,16 +1,34 @@
+/* Ye Sheng — Lab 5 */
+
 /* Global styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;  /* You can change to 'Georgia' or 'Roboto' */
+  font-family: Arial, sans-serif;
   color: #222;
   max-width: 700px;
   margin: 40px auto;
-  line-height: 1.6;               /* Better readability */
-  background-color: #f9f9f9;      /* Soft background, optional */
+  line-height: 1.6;
+  background-color: #f9f9f9;
 }
 
-/* Main heading color */
+/* Header */
+header {
+  padding: 24px;
+  background-color: #0f9488;
+  color: white;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  color: white;
+}
+
+/* Main heading color (default, overridden in header) */
 h1 {
-  color: #0f9488;                 /* Teal, feel free to change */
+  color: #0f9488;
 }
 
 /* Style for the second-level heading */
@@ -29,7 +47,79 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #e67e22;                 /* Orange on hover */
+  color: #e67e22;
+}
+
+/* Navigation — Flexbox layout */
+#main-nav {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  background-color: #0d3b36;
+  padding: 8px;
+}
+
+#main-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+}
+
+#main-nav a:hover {
+  background-color: #14b8a6;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+thead {
+  background-color: #e6f7f4;
+}
+
+/* Form styling */
+input,
+textarea,
+select {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: #0f9488;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #14b8a6;
+}
+
+/* Main content padding */
+main {
+  padding: 0 16px 24px;
 }
 
 /* Responsive image with subtle rounding */
@@ -38,4 +128,11 @@ img {
   height: auto;
   border-radius: 8px;
   margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  padding: 16px;
+  text-align: center;
+  background-color: #f3f4f6;
 }
