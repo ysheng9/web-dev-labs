@@ -1,6 +1,6 @@
-/* Ye Sheng — Lab 5 */
+/* Ye Sheng — Lab 6 */
 
-/* Global styles */
+/* ==================== 全局样式 ==================== */
 * {
   box-sizing: border-box;
 }
@@ -14,31 +14,31 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Header */
+/* ==================== Header：吸顶定位 ==================== */
 header {
   padding: 24px;
   background-color: #0f9488;
   color: white;
   margin-bottom: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 header h1 {
   color: white;
 }
 
-/* Main heading color (default, overridden in header) */
 h1 {
   color: #0f9488;
 }
 
-/* Style for the second-level heading */
 h2 {
   color: #2c3e50;
   border-bottom: 2px solid #0f9488;
   padding-bottom: 5px;
 }
 
-/* Link styling with hover effect */
 a {
   color: #0f9488;
   text-decoration: none;
@@ -50,9 +50,11 @@ a:hover {
   color: #e67e22;
 }
 
-/* Navigation — Flexbox layout */
+/* ==================== 研究生扩展：移动优先 nav ==================== */
+/* 基础样式：默认手机布局（纵向） */
 #main-nav {
   display: flex;
+  flex-direction: column;
   gap: 8px;
   justify-content: center;
   background-color: #0d3b36;
@@ -63,13 +65,31 @@ a:hover {
   color: white;
   text-decoration: none;
   padding: 12px;
+  transition: background-color 0.2s ease;
 }
 
 #main-nav a:hover {
   background-color: #14b8a6;
 }
 
-/* Table styling */
+/* ==================== Lab 6：图片与徽章 ==================== */
+.image-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #dc2626;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  z-index: 5;
+}
+
+/* ==================== 表格 ==================== */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -87,7 +107,7 @@ thead {
   background-color: #e6f7f4;
 }
 
-/* Form styling */
+/* ==================== 表单 ==================== */
 input,
 textarea,
 select {
@@ -117,12 +137,11 @@ button:hover {
   background-color: #14b8a6;
 }
 
-/* Main content padding */
+/* ==================== 其他 ==================== */
 main {
   padding: 0 16px 24px;
 }
 
-/* Responsive image with subtle rounding */
 img {
   max-width: 100%;
   height: auto;
@@ -130,9 +149,36 @@ img {
   margin-top: 10px;
 }
 
-/* Footer */
 footer {
   padding: 16px;
   text-align: center;
   background-color: #f3f4f6;
+}
+
+/* ==================== 媒体查询 ==================== */
+
+/* 研究生扩展：桌面断点，用 min-width 加回横向 nav */
+@media (min-width: 600px) {
+  #main-nav {
+    flex-direction: row;
+  }
+}
+
+/* Lab 6 标准：手机断点，只缩小标题（nav 已由基础样式处理） */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Lab 6 标准：平板断点，表格可横向滚动，表单不溢出 */
+@media (max-width: 900px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  form {
+    max-width: 100%;
+  }
 }
