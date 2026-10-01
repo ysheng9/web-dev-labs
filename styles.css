@@ -182,3 +182,24 @@ footer {
     max-width: 100%;
   }
 }
+
+body.dark {
+  background-color: #111827;
+  color: #f1f5f9;
+}
+
+body.dark h2 {
+  color: #f1f5f9;
+  border-bottom-color: #14b8a6;
+}
+
+body.dark footer {
+  background-color: #1f2937;
+  color: #f1f5f9;
+}
+
+body.dark thead {
+  background-color: #e6f7f4;  /* 保持浅色背景 */
+  color: #111827;              /* 表头文字变黑 */
+}
+

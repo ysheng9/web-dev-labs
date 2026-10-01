@@ -1,10 +1,24 @@
-// Ye Sheng - Lab 4 Graduate Extension
-// ZIP code validation using RegExp.test()
+// Ye Sheng — Lab 7
 
-const zipInput = document.getElementById('zip');
-const zipPattern = /^\d{5}$/;
+// Part 2: Variables, data types, operators, template literals
+const name = "Ada";
+let labsCompleted = 6;
+let isEnrolled = false;
+labsCompleted = labsCompleted + 1;
+console.log(`${name} has completed ${labsCompleted} labs.`);
 
-zipInput.addEventListener('input', () => {
-  const isValidZip = zipPattern.test(zipInput.value);
-  console.log('ZIP value:', zipInput.value, '| valid:', isValidZip);
+// Part 3: Like counter
+const likeBtn = document.querySelector("#like-btn");
+const likeCount = document.querySelector("#like-count");
+let likes = 0;
+
+likeBtn.addEventListener("click", function () {
+  likes = likes + 1;
+  likeCount.textContent = `${likes} likes`;
+});
+
+// Part 4: Dark mode toggle
+const themeBtn = document.querySelector("#theme-btn");
+themeBtn.addEventListener("click", function () {
+  document.body.classList.toggle("dark");
 });
