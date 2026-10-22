@@ -1,4 +1,12 @@
-// Ye Sheng — Lab 8
+// Ye Sheng — Lab 9
+
+/* Lab9 test code
+console.log("1. Starting");
+setTimeout(function () {
+  console.log("2. This runs later");
+}, 1000);
+console.log("3. This runs immediately");
+*/
 
 // ===== Lab 7 Part 2: Variables, data types, operators, template literals =====
 const name = "Ada";
@@ -90,4 +98,83 @@ if (themeBtn) {
   });
 } else {
   console.warn("theme-btn not found on this page");
+}
+
+// ===== Lab 9 Part 2 & 3: Promise + async/await =====
+function getGreetingAfterDelay() {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      resolve("Hello from the future!");
+    }, 800);
+  });
+}
+
+// Part 2 的 .then 写法，确认后可注释掉
+// getGreetingAfterDelay().then(function (message) {
+//   console.log(message);
+// });
+
+// Part 3：async/await 写法
+async function showGreeting() {
+  const message = await getGreetingAfterDelay();
+  console.log(message);
+}
+showGreeting();
+
+// ===== Lab 9 Part 4: Fetch a cat fact =====
+const factBtn = document.querySelector("#fact-btn");
+const factDisplay = document.querySelector("#fact-display");
+
+async function loadFact() {
+  if (!factDisplay) return;
+
+  factDisplay.textContent = "Loading...";
+
+  try {
+    const response = await fetch("https://catfact.ninja/fact");
+
+    if (!response.ok) {
+      throw new Error("Server responded with an error");
+    }
+
+    const data = await response.json();
+    factDisplay.textContent = data.fact;
+  } catch (error) {
+    factDisplay.textContent = "Couldn't load a fact right now. Try again.";
+    console.error(error);
+  }
+}
+
+if (factBtn) {
+  factBtn.addEventListener("click", loadFact);
+} else {
+  console.warn("fact-btn not found on this page");
+}
+
+async function timeSequential() {
+  const url = "https://catfact.ninja/fact";
+  console.time("sequential");
+
+  const a = await (await fetch(url)).json();
+  const b = await (await fetch(url)).json();
+
+  console.timeEnd("sequential");
+  console.log("sequential results", a, b);
+}
+
+async function timeConcurrent() {
+  const url = "https://catfact.ninja/fact";
+  console.time("concurrent");
+
+  const [respA, respB] = await Promise.all([fetch(url), fetch(url)]);
+  const a = await respA.json();
+  const b = await respB.json();
+
+  console.timeEnd("concurrent");
+  console.log("concurrent results", a, b);
+}
+
+async function runTimingTests() {
+  await timeSequential();
+  await timeConcurrent();
 }
